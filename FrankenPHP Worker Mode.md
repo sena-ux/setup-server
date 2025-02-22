@@ -80,6 +80,3 @@
 
    php artisan octane:frankenphp --admin-port 2020 --port 8001
    ```
-
-# Xenara Cafe and Coworking Space
-Ruko Citra Grand, Blok LONDON C-08, Semarang, Jawa Tengah, Indonesia 50276
