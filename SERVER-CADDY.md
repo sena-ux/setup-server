@@ -3,7 +3,7 @@ Server ini akan di bangun dengan menggunakan web server caddy dan php 8.2 pada l
 
 ## Update dan Upgrade
 ```bash
-apt update && apt upgrade
+apt update && apt upgrade -y
 ```
 
 ## 
