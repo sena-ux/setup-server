@@ -1,5 +1,3 @@
-[![FrankenPHP Worker Mode](https://img.youtube.com/vi/A79c5jwc4U0/0.jpg)](https://www.youtube.com/watch?v=A79c5jwc4U0)
-
 # FrankenPHP Worker Mode, Port Berbeda dan Multi Sites/Domain (youtube)
 
 ## Bahasan
