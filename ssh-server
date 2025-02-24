@@ -1,0 +1,18 @@
+# Install SSH Server
+Langkah-langkah install ssh server for linux
+## SSH Server
+```
+1. apt install openssh-server -y
+2. systemctl status ssh
+3. systemctl start ssh
+4. systemctl enable ssh
+```
+## Setting ROOT
+```
+sudo nano /etc/ssh/sshd_config
+PermitRootLogin yes
+PasswordAuthentication yes
+
+ip a / hostname -I
+ssh root@ip
+```
