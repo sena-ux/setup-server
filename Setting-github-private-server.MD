@@ -17,3 +17,32 @@ Salin outputnya, lalu:
 - Masukkan nama key (misalnya Server Global)
 - Paste isi dari id_rsa.pub ke kolom Key
 - Klik Add SSH Key
+
+
+## Uji Coba Koneksi ke GitHub
+```
+ssh -T git@github.com
+```
+
+## Konfigurasi SSH Secara Global untuk GitHub
+```
+nano ~/.ssh/config
+```
+
+Isi dengan
+```
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+```
+
+## Clode repo priivate
+Full Branch
+```
+git clone git@github.com:username/repo-private.git
+```
+Branch Tertentu
+```
+git clone --branch NAMA_BRANCH --single-branch URL_REPO
+```
