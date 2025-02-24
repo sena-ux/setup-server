@@ -16,3 +16,14 @@ PasswordAuthentication yes
 ip a / hostname -I
 ssh root@ip
 ```
+
+## Custom Port SSH
+```
+nano /etc/ssh/sshd_config
+Port 2222
+ufw allow 2222/tcp
+ufw status
+systemctl restart ssh
+
+ssh -p 2222 user@IP_SERVER
+```
