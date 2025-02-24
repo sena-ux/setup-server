@@ -27,3 +27,8 @@ systemctl restart ssh
 
 ssh -p 2222 user@IP_SERVER
 ```
+
+Jika SSH sama maka hapus dulu keygen yang lama
+```
+ssh-keygen -R "[103.207.97.114]:8084"
+```
