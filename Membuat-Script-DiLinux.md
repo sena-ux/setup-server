@@ -12,23 +12,20 @@ Lalu, masukkan skrip berikut ke dalam file:
 ```
 #!/bin/bash
 echo "Menonaktifkan semua layanan Snap yang sedang berjalan..."
-```
+
 # Hentikan semua layanan Snap yang sedang berjalan
-```
+
 for service in $(systemctl list-units --type=service --state=running | grep snap | awk '{print $1}'); do
     sudo systemctl stop $service
 done
-```
 
 # Nonaktifkan semua layanan Snap agar tidak berjalan saat booting
-```
+
 for service in $(systemctl list-units --type=service --state=running | grep snap | awk '{print $1}'); do
     sudo systemctl disable $service
 done
-```
 
 # Hentikan dan nonaktifkan Snap daemon utama
-```
 sudo systemctl stop snapd
 sudo systemctl disable snapd
 
