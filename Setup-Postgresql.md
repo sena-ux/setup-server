@@ -1,0 +1,166 @@
+1️⃣ Update & Install PostgreSQL
+Pastikan sistem Debian sudah up-to-date:
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+Lalu install PostgreSQL:
+
+```
+sudo apt install postgresql postgresql-contrib -y
+```
+Cek apakah PostgreSQL sudah berjalan:
+
+```
+sudo systemctl status postgresql
+```
+Jika belum berjalan, start PostgreSQL:
+
+```
+sudo systemctl enable --now postgresql
+```
+
+
+2️⃣ Buat User & Custom Password
+Secara default, PostgreSQL menggunakan user postgres. Kita akan mengubah password:
+
+```
+sudo -u postgres psql
+```
+
+Setel password untuk user postgres:
+
+```
+ALTER USER postgres WITH PASSWORD 'mypassword';
+```
+(Ubah mypassword dengan password yang kuat.)
+
+
+Keluar dari PostgreSQL:
+
+```
+\q
+```
+
+
+3️⃣ Konfigurasi Remote Access (Opsional)
+Secara default, PostgreSQL hanya bisa diakses dari localhost.
+Jika ingin akses dari server lain:
+
+- Edit postgresql.conf:
+```
+sudo nano /etc/postgresql/15/main/postgresql.conf
+```
+(Ubahlah 15 sesuai dengan versi PostgreSQL yang terinstall.)
+Cari baris berikut ini:
+
+```
+#listen_addresses = 'localhost'
+```
+
+Ubah menjadi:
+
+```
+listen_addresses = '*'
+```
+
+(Simpan dan keluar Ctrl+X, Y, Enter.)
+
+- Edit pg_hba.conf:
+
+```
+sudo nano /etc/postgresql/15/main/pg_hba.conf
+```
+
+Tambahkan baris berikut di paling bawah agar bisa akses dari jaringan lain:
+
+```
+host    all             all             0.0.0.0/0               md5
+host    all             all             ::/0                    md5
+```
+Simpan dan keluar.
+
+- Restart PostgreSQL agar perubahan diterapkan:
+
+```
+sudo systemctl restart postgresql
+```
+
+
+Cek apakah PostgreSQL sudah mendengarkan di semua interface:
+
+```
+ss -nlt | grep 5432
+```
+
+Jika output menunjukkan 0.0.0.0:5432, berarti PostgreSQL sudah bisa diakses dari luar.
+
+- Optimasi Performa PostgreSQL
+Buka file postgresql.conf:
+```
+sudo nano /etc/postgresql/15/main/postgresql.conf
+```
+Cari dan sesuaikan parameter berikut (untuk server 1 CPU & RAM 2GB, sesuaikan jika lebih besar):
+
+```
+# Gunakan RAM lebih banyak untuk query caching
+shared_buffers = 512MB
+
+# Jumlah maksimal koneksi
+max_connections = 100
+
+# Work memory per query
+work_mem = 16MB
+
+# Buat checkpoint lebih jarang untuk mengurangi disk I/O
+checkpoint_timeout = 15min
+```
+
+
+Simpan dan restart PostgreSQL:
+
+```
+sudo systemctl restart postgresql
+```
+
+
+5️⃣ Membuat Database & User untuk Aplikasi
+Misalnya kamu ingin buat database absensi untuk aplikasi Laravel:
+
+- Login ke PostgreSQL:
+
+```
+sudo -u postgres psql
+```
+
+- Buat database:
+
+```
+CREATE DATABASE absensi;
+```
+
+- Buat user baru:
+
+```
+CREATE USER absensi_user WITH ENCRYPTED PASSWORD 'securepassword';
+```
+
+- Beri hak akses ke database absensi:
+
+```
+GRANT ALL PRIVILEGES ON DATABASE absensi TO absensi_user;
+```
+Keluar:
+
+```
+\q
+```
+
+6️⃣ Cek Koneksi dari Luar Server
+Coba koneksi dari komputer lain:
+
+```
+psql -h <IP_SERVER> -U absensi_user -d absensi
+(Ubah <IP_SERVER> dengan IP server PostgreSQL.)
+```
+Jika berhasil masuk, berarti PostgreSQL sudah bisa diakses dari luar.
