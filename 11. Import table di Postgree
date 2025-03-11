@@ -1,0 +1,14 @@
+#  Import Table di Postgree
+1. Pastikan file sql sudah tersedia di root
+2. Pindahkan ke temp
+```
+mv /root/Untitled.sql /tmp/
+```
+3. Berikan permision agar bisa di akses
+```
+chmod 644 /tmp/Untitled.sql
+```
+4. Import sql dengan perintah
+```
+su - postgres -c "psql -U postgres -d siap_komandan -f /tmp/Untitled.sql"
+```
