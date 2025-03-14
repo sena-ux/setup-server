@@ -29,10 +29,6 @@ echo "🌀 Menghapus Cache Nginx..."
 sudo rm -rf /var/cache/nginx/*
 sudo rm -rf /var/log/nginx/*.log
 
-# Menghapus Cache PostgreSQL (Vacuum)
-# echo "🐘 Membersihkan Cache PostgreSQL (VACUUM)..."
-# sudo -u postgres psql -c "VACUUM FULL;"
-# sudo -u postgres psql -c "REINDEX DATABASE postgres;"
 
 # Menghapus Cache PHP (opcache, sessions)
 echo "🐘 Menghapus Cache PHP (Opcache & Sessions)..."
@@ -50,5 +46,10 @@ sudo rm -rf /var/cache/snapd/
 # Menghapus Cache System
 echo "🧩 Menghapus Cache System (/var/cache)..."
 sudo rm -rf /var/cache/*
+
+# Menghapus Cache PostgreSQL (Vacuum)
+# echo "🐘 Membersihkan Cache PostgreSQL (VACUUM)..."
+# sudo -u postgres psql -c "VACUUM FULL;"
+# sudo -u postgres psql -c "REINDEX DATABASE postgres;"
 
 echo "✅ Pembersihan Selesai! Sistem telah dibersihkan dengan aman."
