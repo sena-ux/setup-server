@@ -30,9 +30,9 @@ sudo rm -rf /var/cache/nginx/*
 sudo rm -rf /var/log/nginx/*.log
 
 # Menghapus Cache PostgreSQL (Vacuum)
-echo "🐘 Membersihkan Cache PostgreSQL (VACUUM)..."
-sudo -u postgres psql -c "VACUUM FULL;"
-sudo -u postgres psql -c "REINDEX DATABASE postgres;"
+# echo "🐘 Membersihkan Cache PostgreSQL (VACUUM)..."
+# sudo -u postgres psql -c "VACUUM FULL;"
+# sudo -u postgres psql -c "REINDEX DATABASE postgres;"
 
 # Menghapus Cache PHP (opcache, sessions)
 echo "🐘 Menghapus Cache PHP (Opcache & Sessions)..."
