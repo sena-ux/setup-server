@@ -3,13 +3,7 @@
 # Stop on error
 set -e
 
-# Prompt: PHP Version
-read -p "Masukkan versi PHP yang ingin digunakan (default: 8.3): " PHP_VERSION
-PHP_VERSION=${PHP_VERSION:-8.3}
-
-# Prompt: Laravel Project Directory
-read -p "Masukkan path direktori Laravel (default: /var/www/laravel-app): " PROJECT_DIR
-PROJECT_DIR=${PROJECT_DIR:-/var/www/laravel-app}
+PHP_VERSION=8.3
 
 echo "🚀 Memulai Setup Server Laravel..."
 
@@ -40,11 +34,5 @@ sudo apt install -y nginx
 # Install PostgreSQL
 echo "🗄️ Menginstal PostgreSQL..."
 sudo apt install -y postgresql postgresql-contrib
-
-# Siapkan direktori Laravel
-echo "📁 Menyiapkan direktori Laravel di $PROJECT_DIR"
-sudo mkdir -p $PROJECT_DIR
-sudo chown -R $USER:www-data $PROJECT_DIR
-sudo chmod -R 775 $PROJECT_DIR
 
 echo "✅ Server siap! PHP $PHP_VERSION terpasang. Laravel dapat diletakkan di $PROJECT_DIR"
