@@ -3,8 +3,7 @@
 # Stop on error
 set -e
 
-# Variables
-read -p "Masukkan path direktori Laravel (default: 8.3): " PHP_VERSION
+read -p "Masukkan versi PHP yang ingin digunakan (default: 8.3): " PHP_VERSION
 PHP_VERSION=${PHP_VERSION:-8.3}
 
 echo "🚀 Starting Setup Server..."
