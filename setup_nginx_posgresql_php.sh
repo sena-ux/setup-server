@@ -2,9 +2,7 @@
 
 # Stop on error
 set -e
-
-read -p "Masukkan versi PHP yang ingin digunakan (default: 8.3): " PHP_VERSION
-PHP_VERSION=${PHP_VERSION:-8.3}
+PHP_VERSION=8.3
 
 echo "🚀 Starting Setup Server..."
 
