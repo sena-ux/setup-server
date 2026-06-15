@@ -404,9 +404,7 @@ sqlite3 :memory:
 CREATE DATABASE toko;
 
 -- Dengan encoding yang eksplisit (sangat direkomendasikan untuk teks Indonesia)
-CREATE DATABASE toko
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE toko CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Dengan pengecekan apakah sudah ada
 CREATE DATABASE IF NOT EXISTS toko;
