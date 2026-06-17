@@ -1438,6 +1438,9 @@ GRANT SELECT (nama, harga) ON toko.produk TO 'display'@'localhost';
 -- Izinkan user memberikan hak aksesnya ke user lain
 GRANT SELECT ON toko.* TO 'supervisor'@'localhost' WITH GRANT OPTION;
 
+-- Memberikan akses sekalian membuat user
+GRANT ALL PRIVILEGES ON toko.* TO 'admin'@'localhost' IDENTIFIED BY 'password_kamu';
+
 -- Terapkan perubahan privilege
 FLUSH PRIVILEGES;
 ```
